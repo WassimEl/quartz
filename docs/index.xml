@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>Wass RSS</title>
+      <link>https://wassimel.github.io/quartz</link>
+      <description>Les dernières 10 notes on Wass RSS</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>2026-05-09 - Untitled1</title>
+    <link>https://wassimel.github.io/quartz/2026-05-09---Untitled1</link>
+    <guid>https://wassimel.github.io/quartz/2026-05-09---Untitled1</guid>
+    <description><![CDATA[ [JEU] 2026-05-09 - Untitled1 À compléter…. ]]></description>
+    <pubDate>Fri, 08 May 2026 22:00:00 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>
