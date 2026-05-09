@@ -3,22 +3,23 @@ import * as Plugin from "./quartz/plugins"
 
 /**
  * Quartz 4 Configuration
- *
+ * Version personnalisée pour newsletter RSS avec Obsidian
+ * 
  * See https://quartz.jzhao.xyz/configuration for more information.
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Quartz 4",
+    pageTitle: "Wass RSS",        // ← Le nom de ton site/newsletter
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
     analytics: {
       provider: "plausible",
     },
-    locale: "en-US",
-    baseUrl: "quartz.jzhao.xyz",
-    ignorePatterns: ["private", "templates", ".obsidian"],
-    defaultDateType: "modified",
+    locale: "fr-FR",                   // ← Changé : français
+    baseUrl: "wassimel.github.io/quartz",  // ← À MODIFIER avec ton nom GitHub
+    ignorePatterns: ["private", "templates", ".obsidian", "scripts"],
+    defaultDateType: "created",        // ← Changé : utilise la date de création
     theme: {
       fontOrigin: "googleFonts",
       cdnCaching: true,
@@ -73,7 +74,19 @@ const config: QuartzConfig = {
       Plugin.Description(),
       Plugin.Latex({ renderEngine: "katex" }),
     ],
-    filters: [Plugin.RemoveDrafts()],
+    filters: [
+      Plugin.RemoveDrafts(),
+      // Filtre personnalisé : ne publie que les notes avec publish: true
+      // Pour l'utiliser, ajoute "publish: true" dans le frontmatter de tes notes
+      // Si tu veux l'activer, décommente les lignes ci-dessous
+      // {
+      //   name: "PublishOnlyFilter",
+      //   resolve: (ctx) => {
+      //     // Ne publie que les notes qui ont explicitement publish: true
+      //     return ctx.frontmatter?.publish === true
+      //   }
+      // }
+    ],
     emitters: [
       Plugin.AliasRedirects(),
       Plugin.ComponentResources(),
@@ -81,15 +94,14 @@ const config: QuartzConfig = {
       Plugin.FolderPage(),
       Plugin.TagPage(),
       Plugin.ContentIndex({
-        enableSiteMap: true,
-        enableRSS: true,
+        enableSiteMap: true,    // Génère un sitemap pour le SEO
+        enableRSS: true,        // ← RSS ACTIVÉ ! Ton flux sera à /index.xml
       }),
       Plugin.Assets(),
       Plugin.Static(),
       Plugin.Favicon(),
       Plugin.NotFoundPage(),
-      // Comment out CustomOgImages to speed up build time
-      Plugin.CustomOgImages(),
+      // Plugin.CustomOgImages(), // ← Commenté pour accélérer le build (optionnel)
     ],
   },
 }
