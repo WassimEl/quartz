@@ -1,4 +1,5 @@
 @echo off
+d:
 cd /d "D:\Obsidian coffres\quartz"
 npx quartz build
 if exist docs rmdir /s /q docs
