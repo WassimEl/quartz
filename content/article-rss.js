@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────
-//  TAGS DISPONIBLES — modifie cette liste librement
+//      liste des tags
 // ─────────────────────────────────────────────────────
 const TAGS = ["jeu", "jeu gratuit", "info", "rumeur", "avis", "autre"];
 
@@ -7,21 +7,21 @@ module.exports = async (params) => {
     const { quickAddApi } = params;
     const { vault } = app;
 
-    // 1. Choisir le tag
+    // 1. set le tag
     const tag = await quickAddApi.suggester(TAGS, TAGS);
     if (!tag) return;
     const tagLabel = tag.toUpperCase();
 
-    // 2. Titre
+    // 2. set le titre
     const titreSaisi = await quickAddApi.inputPrompt("📝 Titre de l'article :");
     if (!titreSaisi || titreSaisi.trim() === "") return;
     const titre = titreSaisi.trim();
 
-    // 3. Description (résumé affiché dans Feedly)
+    // 3. description
     const description = await quickAddApi.inputPrompt("📋 Description courte (affichée dans le flux RSS) :");
     if (!description) return;
 
-    // 4. Date
+    // 4. date
     const date = new Date().toISOString().slice(0, 10);
 
     // 5. Nom du fichier : "2026-05-10 - JEU GRATUIT Mon titre.md"
