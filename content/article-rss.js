@@ -1,82 +1,78 @@
-// scripts/article-rss.js
-// Script pour créer un article RSS avec choix de tag
+// ─────────────────────────────────────────────────────
+//  TAGS DISPONIBLES — modifie cette liste librement
+// ─────────────────────────────────────────────────────
+const TAGS = ["jeu", "jeu gratuit", "info", "rumeur", "avis", "autre"];
 
+// ─────────────────────────────────────────────────────
+//  SCRIPT
+// ─────────────────────────────────────────────────────
 module.exports = async (params) => {
     const { quickAddApi } = params;
     const { vault } = app;
-    
-    // 1. Demander le titre (optionnel)
-    let title = await quickAddApi.inputPrompt("📝 Titre de l'article (optionnel) :");
-    
-    // 2. Générer la date du jour au format YYYY-MM-DD
+
+    // 1. Choisir le tag en premier
+    const tag = await quickAddApi.suggester(TAGS, TAGS);
+    if (!tag) return;
+
+    const tagLabel = tag.toUpperCase();
+
+    // 2. Demander le titre
+    const titreSaisi = await quickAddApi.inputPrompt("📝 Titre de l'article (laisser vide = Untitled) :");
+
+    // 3. Date du jour
     const date = new Date().toISOString().slice(0, 10);
-    
-    // 3. Gérer le titre automatique si vide
-    let finalTitle;
-    if (!title || title.trim() === "") {
-        // Chercher les fichiers commençant par "date - Untitled"
+
+    // 4. Gérer le titre final
+    let titre;
+    if (!titreSaisi || titreSaisi.trim() === "") {
         const allFiles = vault.getMarkdownFiles();
         let maxNum = 0;
-        const prefix = `${date} - Untitled`;
-        
         for (const file of allFiles) {
-            if (file.name.startsWith(prefix)) {
-                const match = file.name.match(/Untitled(\d+)\.md$/);
-                if (match) {
-                    const num = parseInt(match[1]);
-                    if (num > maxNum) maxNum = num;
-                }
+            const regex = new RegExp(`^${date} - ${tagLabel} Untitled(\\d+)\\.md$`);
+            const match = file.name.match(regex);
+            if (match) {
+                const num = parseInt(match[1]);
+                if (num > maxNum) maxNum = num;
             }
         }
-        
-        const nextNum = maxNum + 1;
-        finalTitle = `${date} - Untitled${nextNum}`;
-        title = finalTitle;
+        titre = `Untitled${maxNum + 1}`;
     } else {
-        finalTitle = `${date} - ${title}`;
+        titre = titreSaisi.trim();
     }
-    
-    // 4. Demander le tag (suggester avec ta liste)
-    const tagOptions = ["jeu", "info", "rumeur", "avis", "autre"];
-    const tag = await quickAddApi.suggester(tagOptions, tagOptions);
-    if (!tag) return;
-    
-    // 5. Générer le tag en majuscule pour le titre
-    const tagUppercase = tag.toUpperCase();
-    
-    // 6. Construire le contenu (pas de demande de contenu, juste un placeholder)
-    const finalContent = `---
-tags: [${tag}]
-publish: true
-date: ${date}
----
 
-# [${tagUppercase}] ${title}
+    // 5. Nom du fichier : "2026-05-09 - INFO Mon titre.md"
+    const nomFichier = `${date} - ${tagLabel} ${titre}.md`;
+    const cheminFichier = `posts/${nomFichier}`;
+
+    // 6. Vérifier si le fichier existe déjà
+    const fichierExistant = vault.getAbstractFileByPath(cheminFichier);
+    if (fichierExistant) {
+        const ecraser = await quickAddApi.yesNoPrompt("Ce fichier existe déjà. Le remplacer ?");
+        if (!ecraser) return;
+        await vault.delete(fichierExistant);
+    }
+
+    // 7. Contenu de la note
+    const contenu = `---
+title: "[${tagLabel}] ${titre}"
+date: ${date}
+tag: ${tag}
+description: ""
+draft: true
+---
 
 >
 
 `;
-    
-    // 7. Créer le fichier à la racine du coffre
-    const fileName = `${finalTitle}.md`;
-    const filePath = fileName;
-    
-    // Vérifier si le fichier existe déjà
-    const existingFile = vault.getAbstractFileByPath(filePath);
-    if (existingFile) {
-        const overwrite = await quickAddApi.yesNoPrompt("Ce fichier existe déjà. Le remplacer ?");
-        if (!overwrite) return;
+
+    // 8. Créer le fichier dans posts/
+    await vault.create(cheminFichier, contenu);
+
+    // 9. Ouvrir la note
+    const nouveauFichier = vault.getAbstractFileByPath(cheminFichier);
+    if (nouveauFichier) {
+        await app.workspace.getLeaf(false).openFile(nouveauFichier);
     }
-    
-    // Créer le fichier
-    await vault.create(filePath, finalContent);
-    
-    // 8. Ouvrir la note
-    const newFile = vault.getAbstractFileByPath(filePath);
-    if (newFile) {
-        await app.workspace.getLeaf(true).openFile(newFile);
-    }
-    
-    // 9. Message de confirmation
-    new Notice(`✅ Article "${fileName}" créé !`);
+
+    new Notice(`✅ Article créé : ${nomFichier}`);
 };

@@ -5,18 +5,6 @@
       <link>https://wassimel.github.io/quartz</link>
       <description>Les dernières 10 notes on Wass RSS</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
-      <item>
-    <title>2026-05-10 - test</title>
-    <link>https://wassimel.github.io/quartz/2026-05-10---test</link>
-    <guid>https://wassimel.github.io/quartz/2026-05-10---test</guid>
-    <description><![CDATA[ [JEU] test . ]]></description>
-    <pubDate>Sat, 09 May 2026 22:00:00 GMT</pubDate>
-  </item><item>
-    <title>2026-05-09 - Jeu gratuit (Dishonored 2)</title>
-    <link>https://wassimel.github.io/quartz/2026-05-09---Jeu-gratuit-(Dishonored-2)</link>
-    <guid>https://wassimel.github.io/quartz/2026-05-09---Jeu-gratuit-(Dishonored-2)</guid>
-    <description><![CDATA[ [JEU] Jeu gratuit (Dishonored 2) Dishonored 2 offer via un giveaway sur Legion Gaming Community Dispo : 05/13/2026 6:00 PM. ]]></description>
-    <pubDate>Fri, 08 May 2026 22:00:00 GMT</pubDate>
-  </item>
+      
     </channel>
   </rss>
