@@ -24,11 +24,11 @@ module.exports = async (params) => {
     // 4. date
     const date = new Date().toISOString().slice(0, 10);
 
-    // 5. Nom du fichier : "2026-05-10 - JEU GRATUIT Mon titre.md"
+    // 5. nom du fichier : "[date] - [tag] [titre].md"
     const nomFichier = `${date} - ${tagLabel} ${titre}.md`;
     const cheminFichier = `posts/${nomFichier}`;
 
-    // 6. Vérifier si le fichier existe déjà
+    // 6. verifier si le fichier existe déjà
     const fichierExistant = vault.getAbstractFileByPath(cheminFichier);
     if (fichierExistant) {
         const ecraser = await quickAddApi.yesNoPrompt("Ce fichier existe déjà. Le remplacer ?");
@@ -36,7 +36,7 @@ module.exports = async (params) => {
         await vault.delete(fichierExistant);
     }
 
-    // 7. Contenu de la note
+    // 7. contenu de la note
     const contenu = `---
 title: "[${tagLabel}] ${titre}"
 date: ${date}
@@ -53,14 +53,15 @@ draft: true
 
 `;
 
-    // 8. Créer le fichier dans posts/
+    // 8. créer le fichier dans posts/
     await vault.create(cheminFichier, contenu);
 
-    // 9. Ouvrir la note
+    // 9. ouvrir la note
     const nouveauFichier = vault.getAbstractFileByPath(cheminFichier);
     if (nouveauFichier) {
         await app.workspace.getLeaf(false).openFile(nouveauFichier);
     }
 
     new Notice(`✅ Article créé : ${nomFichier}`);
+    new Notice(`⚠️ Mode draft : TRUE`);
 };
