@@ -3,44 +3,28 @@
 // ─────────────────────────────────────────────────────
 const TAGS = ["jeu", "jeu gratuit", "info", "rumeur", "avis", "autre"];
 
-// ─────────────────────────────────────────────────────
-//  SCRIPT
-// ─────────────────────────────────────────────────────
 module.exports = async (params) => {
     const { quickAddApi } = params;
     const { vault } = app;
 
-    // 1. Choisir le tag en premier
+    // 1. Choisir le tag
     const tag = await quickAddApi.suggester(TAGS, TAGS);
     if (!tag) return;
-
     const tagLabel = tag.toUpperCase();
 
-    // 2. Demander le titre
-    const titreSaisi = await quickAddApi.inputPrompt("📝 Titre de l'article (laisser vide = Untitled) :");
+    // 2. Titre
+    const titreSaisi = await quickAddApi.inputPrompt("📝 Titre de l'article :");
+    if (!titreSaisi || titreSaisi.trim() === "") return;
+    const titre = titreSaisi.trim();
 
-    // 3. Date du jour
+    // 3. Description (résumé affiché dans Feedly)
+    const description = await quickAddApi.inputPrompt("📋 Description courte (affichée dans le flux RSS) :");
+    if (!description) return;
+
+    // 4. Date
     const date = new Date().toISOString().slice(0, 10);
 
-    // 4. Gérer le titre final
-    let titre;
-    if (!titreSaisi || titreSaisi.trim() === "") {
-        const allFiles = vault.getMarkdownFiles();
-        let maxNum = 0;
-        for (const file of allFiles) {
-            const regex = new RegExp(`^${date} - ${tagLabel} Untitled(\\d+)\\.md$`);
-            const match = file.name.match(regex);
-            if (match) {
-                const num = parseInt(match[1]);
-                if (num > maxNum) maxNum = num;
-            }
-        }
-        titre = `Untitled${maxNum + 1}`;
-    } else {
-        titre = titreSaisi.trim();
-    }
-
-    // 5. Nom du fichier : "2026-05-09 - INFO Mon titre.md"
+    // 5. Nom du fichier : "2026-05-10 - JEU GRATUIT Mon titre.md"
     const nomFichier = `${date} - ${tagLabel} ${titre}.md`;
     const cheminFichier = `posts/${nomFichier}`;
 
@@ -57,11 +41,15 @@ module.exports = async (params) => {
 title: "[${tagLabel}] ${titre}"
 date: ${date}
 tag: ${tag}
-description: ""
+description: "${description}"
 draft: true
 ---
 
->
+## Résumé
+
+> ${description}
+
+## Contenu
 
 `;
 
