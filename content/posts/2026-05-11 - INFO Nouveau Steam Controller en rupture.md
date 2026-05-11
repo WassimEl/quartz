@@ -13,9 +13,9 @@ image: https://cdn.videocardz.com/1/2026/05/STEAM-CONTROLLER-STEAM-MACHINE-HERO-
 
 ## Contenu
 
-Réservations ouvertes le 8 mai à 10h Pacifique. Valve enregistrera la place de chaque utilisateur dans la file d'attente et enverra des e-mails de commande dans la même commande où les réservations ont été effectuées. Une fois l'e-mail arrivé, les utilisateurs auront 72 heures pour finaliser... 
+*Réservations ouvertes le 8 mai à 10h Pacifique. Valve enregistrera la place de chaque utilisateur dans la file d'attente et enverra des e-mails de commande dans la même commande où les réservations ont été effectuées. Une fois l'e-mail arrivé, les utilisateurs auront 72 heures pour finaliser...* 
 
-Source: VideoCardz.com
+*Source: VideoCardz.com*
 https://videocardz.com/newz/valve-opens-steam-controller-reservations-could-steam-machine-follow
 
 ![steam machine & controller](https://cdn.videocardz.com/1/2026/05/STEAM-CONTROLLER-STEAM-MACHINE-HERO-1-1200x624.jpg)
