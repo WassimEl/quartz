@@ -8,5 +8,5 @@ draft: false
 
 Dishonored 2 offert via un giveaway sur **Legion Gaming Community** : https://gaming.lenovo.com/dishonored-2-key-drops
 
-Dispo : 05/13/2026 6:00 PM
+Dispo à partir du 13 mai 2026 6:00 PM
 
