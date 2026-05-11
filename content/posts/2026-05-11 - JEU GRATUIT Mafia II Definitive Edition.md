@@ -4,6 +4,7 @@ date: 2026-05-11
 tag: jeu gratuit
 description: Jeux gratuit a récupérer avec Amazon prime via Luna
 draft: false
+image: https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1030830/header.jpg?t=1759852951
 ---
 
 ## Résumé

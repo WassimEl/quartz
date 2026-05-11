@@ -43,6 +43,7 @@ date: ${date}
 tag: ${tag}
 description: "${description}"
 draft: true
+image: "https://ton-image.jpg"
 ---
 
 ## Résumé

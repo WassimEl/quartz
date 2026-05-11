@@ -4,6 +4,7 @@ date: 2026-05-11
 tag: info
 description: Valve ouvre la file d'attente de réservation du Steam Controller après épuisement du stock de lancement
 draft: false
+image: https://cdn.videocardz.com/1/2026/05/STEAM-CONTROLLER-STEAM-MACHINE-HERO-1-1200x624.jpg
 ---
 
 ## Résumé
