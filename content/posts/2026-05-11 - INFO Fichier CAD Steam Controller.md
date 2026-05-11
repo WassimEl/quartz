@@ -2,7 +2,7 @@
 title: "[INFO] Fichier CAD Steam Controller"
 date: 2026-05-11
 tag: info
-description: Valve publie les fichier CAD de la mannette Steam pour le modding
+description: Valve publie les fichier CAD de la manette Steam pour le modding
 draft: false
 image: https://cdn.videocardz.com/1/2026/05/STEAM-CONTROLLER-CAD-1200x624.jpg
 ---
