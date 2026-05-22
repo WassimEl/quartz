@@ -6,6 +6,18 @@
       <description>Les dernières 10 notes on Wass RSS</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>[AUTRE] Claude est overkill des fois</title>
+    <link>https://wassimel.github.io/quartz/posts/2026-05-22---AUTRE-Claude-est-overkill-des-fois</link>
+    <guid>https://wassimel.github.io/quartz/posts/2026-05-22---AUTRE-Claude-est-overkill-des-fois</guid>
+    <description><![CDATA[ Je me renseigne sur mon projet avec le mac mini grâce à claude mais... ]]></description>
+    <pubDate>Thu, 21 May 2026 22:00:00 GMT</pubDate>
+  </item><item>
+    <title>[AUTRE] Note Obsidian</title>
+    <link>https://wassimel.github.io/quartz/posts/2026-05-19---AUTRE-Note-Obsidian</link>
+    <guid>https://wassimel.github.io/quartz/posts/2026-05-19---AUTRE-Note-Obsidian</guid>
+    <description><![CDATA[ Comment j'organise sur obsidian ]]></description>
+    <pubDate>Mon, 18 May 2026 22:00:00 GMT</pubDate>
+  </item><item>
     <title>[JEU] DuskLight</title>
     <link>https://wassimel.github.io/quartz/posts/2026-05-15---JEU-Dusklight</link>
     <guid>https://wassimel.github.io/quartz/posts/2026-05-15---JEU-Dusklight</guid>
@@ -52,18 +64,6 @@
     <link>https://wassimel.github.io/quartz/posts/2026-05-11---INFO-LEAK-Carte-GTA-6</link>
     <guid>https://wassimel.github.io/quartz/posts/2026-05-11---INFO-LEAK-Carte-GTA-6</guid>
     <description><![CDATA[ La communauté de GTA 6 a récrée la ma du jeu ]]></description>
-    <pubDate>Sun, 10 May 2026 22:00:00 GMT</pubDate>
-  </item><item>
-    <title>[INFO] LEAK Forza horizon 6</title>
-    <link>https://wassimel.github.io/quartz/posts/2026-05-11---INFO-LEAK-Forza-horizon-6</link>
-    <guid>https://wassimel.github.io/quartz/posts/2026-05-11---INFO-LEAK-Forza-horizon-6</guid>
-    <description><![CDATA[ Forza horizon 6 a entierement leak 10 jours avant sa sortie officiel ]]></description>
-    <pubDate>Sun, 10 May 2026 22:00:00 GMT</pubDate>
-  </item><item>
-    <title>[INFO] Nouvelle manette Steam en rupture</title>
-    <link>https://wassimel.github.io/quartz/posts/2026-05-11---INFO-Nouveau-Steam-Controller-en-rupture</link>
-    <guid>https://wassimel.github.io/quartz/posts/2026-05-11---INFO-Nouveau-Steam-Controller-en-rupture</guid>
-    <description><![CDATA[ Valve ouvre la file d'attente de réservation du Steam Controller après épuisement du stock de lancement ]]></description>
     <pubDate>Sun, 10 May 2026 22:00:00 GMT</pubDate>
   </item>
     </channel>
